@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Процес роботи креативного стратега — magic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+<style>
+:root{--blue:#38A0FF;--purple:#AA7AFF;--gradient:linear-gradient(135deg,#38A0FF,#AA7AFF);--gradient-soft:linear-gradient(135deg,rgba(56,160,255,.07),rgba(170,122,255,.07));--ink-900:#0f1729;--ink-800:#1a2340;--ink-700:#2a3558;--ink-600:#3d4a6e;--ink-500:#556085;--ink-400:#7580a0;--ink-300:#99a2ba;--ink-200:#c4c9d8;--ink-100:#e4e7ef;--ink-50:#f4f5f9;--success:#2EC28A;--warning:#FFB020;--danger:#F5525C;--bg:#f7f8fb;--card:#fff;--border:#e4e7ef;--r-sm:10px;--r-md:14px;--r-lg:20px;--r-xl:28px;--shadow-sm:0 2px 8px rgba(15,23,41,.04);--shadow-md:0 4px 20px rgba(15,23,41,.06);--sp-2:8px;--sp-3:12px;--sp-4:16px;--sp-6:24px;--sp-8:32px;--sp-12:48px;--sp-16:64px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Onest',sans-serif;font-weight:300;background:var(--bg);color:var(--ink-800);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+.hero{background:var(--ink-900);color:#fff;padding:var(--sp-16) var(--sp-12) var(--sp-12);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-120px;right:-80px;width:480px;height:480px;background:var(--gradient);border-radius:50%;opacity:.12;filter:blur(80px)}
+.hero::after{content:'';position:absolute;bottom:-60px;left:20%;width:300px;height:300px;background:var(--purple);border-radius:50%;opacity:.06;filter:blur(60px)}
+.hero-inner{position:relative;z-index:1;max-width:860px;margin:0 auto}
+.hero-logo{font-weight:900;font-size:18px;letter-spacing:-.02em;margin-bottom:var(--sp-8);opacity:.4}
+.hero h1{font-weight:900;font-size:44px;letter-spacing:-.03em;line-height:1.1;max-width:640px;margin-bottom:var(--sp-4)}
+.hero h1 .gt{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-weight:300;font-size:17px;opacity:.5;max-width:500px}
+.container{max-width:860px;margin:0 auto;padding:var(--sp-12) var(--sp-6) 80px}
+.cycle-bar{display:flex;align-items:center;justify-content:center;margin:0 calc(-1*var(--sp-6)) var(--sp-12);padding:var(--sp-6);background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);overflow-x:auto}
+.cycle-item{text-align:center;padding:var(--sp-3) var(--sp-4);flex-shrink:0}
+.cycle-dot{width:40px;height:40px;border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp-2);color:#fff}
+.cd-1{background:var(--blue)}.cd-2{background:var(--danger)}.cd-3{background:var(--warning)}.cd-4{background:var(--purple)}
+.cycle-label{font-size:12px;font-weight:700;letter-spacing:-.01em}.cycle-sub{font-size:11px;color:var(--ink-400);margin-top:2px}
+.cycle-arr{color:var(--ink-200);font-size:14px;padding:0 6px;flex-shrink:0;font-weight:300}.cycle-arr.return{color:var(--purple);font-weight:700;font-size:18px}
+.intro-block{font-size:18px;font-weight:300;color:var(--ink-500);margin-bottom:var(--sp-12);line-height:1.7;padding:0 var(--sp-2)}.intro-block strong{color:var(--ink-800);font-weight:700}
+.doc-section{margin-bottom:var(--sp-16)}
+.doc-header{display:flex;align-items:flex-start;gap:var(--sp-6);margin-bottom:var(--sp-8);padding-bottom:var(--sp-6);border-bottom:2px solid var(--ink-900)}
+.doc-num{font-weight:900;font-size:56px;letter-spacing:-.03em;line-height:1;flex-shrink:0;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.doc-info{flex:1;padding-top:8px}.doc-info h2{font-weight:900;font-size:26px;letter-spacing:-.02em;color:var(--ink-900);margin-bottom:4px}.doc-info .ds{font-size:14px;color:var(--ink-400);font-weight:300}
+.ft{display:inline-block;padding:4px 12px;border-radius:999px;font-size:11px;font-weight:700;margin-top:var(--sp-2);letter-spacing:.02em}.ft-x{background:rgba(46,194,138,.1);color:var(--success)}.ft-h{background:rgba(56,160,255,.1);color:var(--blue)}
+.fb{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;font-size:13px;font-weight:500;margin-bottom:var(--sp-4)}.fb-d{background:rgba(245,82,92,.08);color:var(--danger)}.fb-w{background:rgba(56,160,255,.08);color:var(--blue)}.fb-c{background:rgba(170,122,255,.08);color:var(--purple)}.fb-t{background:rgba(255,176,32,.08);color:#c88800}
+.wi{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-8);margin-bottom:var(--sp-6);font-size:15px;font-weight:300;box-shadow:var(--shadow-sm)}.wi strong{color:var(--ink-900);font-weight:700}
+.wg{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-3);margin-bottom:var(--sp-6)}
+.wc{padding:var(--sp-4) var(--sp-6);border-radius:var(--r-lg);font-size:13px;font-weight:300}.wc-do{background:var(--gradient-soft);border:1px solid rgba(56,160,255,.12)}.wc-no{background:var(--ink-50);border:1px solid var(--border)}
+.wc h4{font-size:13px;font-weight:700;margin-bottom:var(--sp-2);color:var(--ink-800)}.wc ul{list-style:none;padding:0}.wc li{padding:3px 0;padding-left:16px;position:relative;color:var(--ink-600)}.wc-do li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--blue)}.wc-no li::before{content:'';position:absolute;left:1px;top:10px;width:5px;height:5px;border-radius:1px;background:var(--ink-300)}
+.tb{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:var(--sp-6);box-shadow:var(--shadow-sm)}
+.tn{display:flex;border-bottom:1px solid var(--border);overflow-x:auto}
+.tb-btn{flex:1;padding:var(--sp-3) var(--sp-4);font-family:'Onest',sans-serif;font-size:12px;font-weight:500;text-align:center;cursor:pointer;border:none;background:var(--ink-50);color:var(--ink-400);transition:all .15s;border-right:1px solid var(--border);white-space:nowrap}.tb-btn:last-child{border-right:none}.tb-btn:hover{color:var(--ink-700)}.tb-btn.active{background:var(--card);color:var(--ink-900);font-weight:700;box-shadow:inset 0 -2px 0 var(--blue)}
+.tp{display:none;padding:var(--sp-6);font-size:14px;font-weight:300;line-height:1.7}.tp.active{display:block}.tp h5{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--ink-900)}.tp p{margin-bottom:10px;color:var(--ink-600)}
+.fd{display:flex;gap:var(--sp-3);padding:8px 0;border-bottom:1px solid var(--border)}.fd:last-child{border-bottom:none}.fd-n{font-weight:500;min-width:130px;flex-shrink:0;font-size:13px;color:var(--ink-800)}.fd-d{font-size:13px;color:var(--ink-500);font-weight:300}
+.wk{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;margin-bottom:var(--sp-6);box-shadow:var(--shadow-sm)}
+.wk-h{padding:var(--sp-3) var(--sp-6);background:var(--ink-900);color:#fff;font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.ws{display:flex;gap:var(--sp-4);padding:var(--sp-4) var(--sp-6);border-bottom:1px solid var(--border);align-items:flex-start}.ws:last-child{border-bottom:none}
+.sn-c{width:28px;height:28px;border-radius:var(--r-sm);border:2px solid var(--ink-200);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;margin-top:2px;color:var(--ink-400)}
+.who{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:3px 8px;border-radius:999px;white-space:nowrap;flex-shrink:0;margin-top:3px}.w-s{background:rgba(56,160,255,.1);color:var(--blue)}.w-j{background:rgba(255,176,32,.1);color:#c88800}
+.sc{flex:1}.sc h5{font-size:14px;font-weight:700;margin-bottom:3px;color:var(--ink-900)}.sc p{font-size:13px;color:var(--ink-500);font-weight:300;line-height:1.6}
+.tr{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:500;background:var(--gradient-soft);color:var(--ink-700);border:1px solid rgba(56,160,255,.12)}
+.scenario{background:var(--ink-900);color:#fff;border-radius:var(--r-xl);padding:var(--sp-8);margin-bottom:var(--sp-6);position:relative;overflow:hidden}
+.scenario::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:var(--gradient);border-radius:50%;opacity:.08;filter:blur(40px)}
+.scenario .sl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;opacity:.35;margin-bottom:var(--sp-3);position:relative}
+.scenario h4{font-weight:900;font-size:18px;letter-spacing:-.01em;margin-bottom:var(--sp-4);position:relative;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ss{display:flex;gap:var(--sp-3);padding:7px 0;font-size:14px;font-weight:300;opacity:.8;position:relative}.ss .sn{font-weight:700;flex-shrink:0;width:18px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.conn{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-4) var(--sp-6);background:var(--gradient-soft);border:1px solid rgba(56,160,255,.12);border-radius:var(--r-lg);margin-bottom:var(--sp-6);font-size:14px;font-weight:300}
+.conn-i{width:40px;height:40px;background:var(--gradient);border-radius:var(--r-md);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#fff}
+.conn strong{color:var(--ink-900);font-weight:700}
+.df{background:var(--card);border:1px solid var(--border);border-radius:var(--r-lg);padding:var(--sp-6) var(--sp-8);margin-bottom:var(--sp-6);box-shadow:var(--shadow-sm)}.df h4{font-size:14px;font-weight:700;margin-bottom:var(--sp-4);color:var(--ink-900)}
+.dr{display:flex;gap:var(--sp-2);padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;align-items:flex-start}.dr:last-child{border-bottom:none}
+.dr-if{font-weight:500;min-width:190px;flex-shrink:0;color:var(--ink-800)}.dr-th{color:var(--ink-500);font-weight:300;flex:1}
+.dr-s{padding:3px 10px;border-radius:999px;font-size:11px;font-weight:700;flex-shrink:0;white-space:nowrap}.s-g{background:rgba(46,194,138,.1);color:var(--success)}.s-w{background:rgba(255,176,32,.1);color:#c88800}.s-d{background:rgba(245,82,92,.1);color:var(--danger)}
+.divider{text-align:center;padding:var(--sp-12) 0}.div-l{width:80px;height:3px;background:var(--gradient);border-radius:999px;margin:0 auto;opacity:.3}
+.flow{background:var(--ink-900);color:#fff;border-radius:var(--r-xl);padding:var(--sp-12) var(--sp-8);margin-top:var(--sp-12);position:relative;overflow:hidden}
+.flow::before{content:'';position:absolute;bottom:-60px;right:-40px;width:300px;height:300px;background:var(--gradient);border-radius:50%;opacity:.06;filter:blur(60px)}
+.flow h3{font-weight:900;font-size:24px;letter-spacing:-.02em;margin-bottom:var(--sp-8);position:relative}
+.fr{display:flex;gap:var(--sp-4);padding:var(--sp-4) 0;border-bottom:1px solid rgba(255,255,255,.06);align-items:flex-start;position:relative}.fr:last-child{border-bottom:none}
+.fr-d{font-weight:700;font-size:13px;min-width:100px;flex-shrink:0;opacity:.4}.fr-d.hl{opacity:1;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.fr-a{flex:1;font-size:14px;font-weight:300;opacity:.75;line-height:1.6}
+.dt{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:500;margin:0 2px}
+.dt-1{background:rgba(56,160,255,.2);color:rgba(255,255,255,.9)}.dt-2{background:rgba(245,82,92,.2);color:rgba(255,255,255,.9)}.dt-3{background:rgba(255,176,32,.2);color:rgba(255,255,255,.9)}.dt-4{background:rgba(170,122,255,.2);color:rgba(255,255,255,.9)}
+.footer{text-align:center;padding:var(--sp-8) 0 0;font-size:12px;color:var(--ink-300);font-weight:300}.footer-g{font-weight:900;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+@media(max-width:640px){.hero{padding:var(--sp-12) var(--sp-6) var(--sp-8)}.hero h1{font-size:30px}.wg{grid-template-columns:1fr}.doc-header{flex-direction:column;gap:var(--sp-2)}.doc-num{font-size:40px}.dr{flex-direction:column}.dr-if{min-width:auto}.container{padding:var(--sp-8) var(--sp-4) 60px}}
+@media print{.hero,.scenario,.flow{-webkit-print-color-adjust:exact;print-color-adjust:exact}.doc-section{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="hero-inner">
+<div class="hero-logo">magic</div>
+<h1>4 документи. 1 цикл.<br><span class="gt">Кожен тиждень краще за попередній.</span></h1>
+<div class="hero-sub">Конкретно: який файл, коли відкривати, що заповнювати, яке рішення приймати.</div>
+</div></div>
+
+<div class="cycle-bar">
+<div class="cycle-item"><div class="cycle-dot cd-1"><i data-lucide="bar-chart-3" style="width:18px;height:18px"></i></div><div class="cycle-label">Reporting</div><div class="cycle-sub">Що відбувається</div></div>
+<div class="cycle-arr">&rarr;</div>
+<div class="cycle-item"><div class="cycle-dot cd-2"><i data-lucide="activity" style="width:18px;height:18px"></i></div><div class="cycle-label">Fatigue</div><div class="cycle-sub">Що вмирає</div></div>
+<div class="cycle-arr">&rarr;</div>
+<div class="cycle-item"><div class="cycle-dot cd-3"><i data-lucide="file-text" style="width:18px;height:18px"></i></div><div class="cycle-label">Brief</div><div class="cycle-sub">Що створюємо</div></div>
+<div class="cycle-arr">&rarr;</div>
+<div class="cycle-item"><div class="cycle-dot cd-4"><i data-lucide="flask-conical" style="width:18px;height:18px"></i></div><div class="cycle-label">Testing</div><div class="cycle-sub">Як перевіряємо</div></div>
+<div class="cycle-arr return">&orarr;</div>
+</div>
+
+<div class="container">
+<div class="intro-block">Ці 4 файли — не окремі документи. Це <strong>один замкнений цикл</strong>, де кожен документ відповідає на одне питання і передає естафету наступному. Reporting показує що відбувається, Fatigue сигналить що вмирає, Brief описує що створити, Testing перевіряє гіпотезу — і все повертається в Reporting.</div>
+
+<!-- ==================== 01 REPORTING ==================== -->
+<div class="doc-section"><div class="doc-header"><div class="doc-num">01</div><div class="doc-info"><h2>Creative Reporting Framework</h2><div class="ds">01_Creative_Reporting_Framework.xlsx</div><span class="ft ft-x">Google Sheets</span></div></div>
+<span class="fb fb-w"><i data-lucide="clock" style="width:14px;height:14px"></i> Щотижня, понеділок-вівторок</span>
+<div class="wi"><strong>Що це і для чого.</strong> Рентген по кожному проєкту. Файл відповідає на три питання: що працює, чому працює, і що робити далі. Без нього рішення приймаються на відчуттях. З ним — на даних. Перший документ, який відкривається на початку тижня, і останній, куди записуються результати в кінці.</div>
+<div class="wg"><div class="wc wc-do"><h4>Коли відкривати</h4><ul><li>Понеділок: подивитись результати минулого тижня</li><li>Перед планеркою: підготувати дані для обговорення</li><li>Коли клієнт питає "як справи з рекламою"</li><li>Коли потрібно вирішити: скейлити чи зупинити креатив</li><li>В кінці тижня: зафіксувати результати нових тестів</li></ul></div><div class="wc wc-no"><h4>Коли не потрібен</h4><ul><li>Посеред тижня без причини — дані ще не накопичились</li><li>Для щоденного моніторингу — для цього Fatigue Protocol</li><li>Для опису що робити — для цього Brief</li></ul></div></div>
+
+<div class="tb"><div class="tn"><button class="tb-btn active" onclick="st(this,'r1')">Тижневий звіт</button><button class="tb-btn" onclick="st(this,'r2')">Скоркард</button><button class="tb-btn" onclick="st(this,'r3')">Аналіз та дії</button><button class="tb-btn" onclick="st(this,'r4')">Бенчмарки</button></div>
+<div class="tp active" id="r1"><h5>Вкладка "Тижневий звіт"</h5><p>Основна таблиця. Один рядок = один креатив. Джун витягує цифри з рекламного кабінету Meta / TikTok і вставляє сюди. Формули автоматично рахують CTR, CPC, CPA, ROAS.</p><div class="fd"><span class="fd-n">Хто заповнює</span><span class="fd-d">Джун (збирає дані з кабінетів, вставляє в таблицю)</span></div><div class="fd"><span class="fd-n">Що заповнювати</span><span class="fd-d">Назва креативу, платформа, формат, кут, витрати, покази, кліки, ATC, покупки, дохід. Решту формули порахують.</span></div><div class="fd"><span class="fd-n">Колонка "Статус"</span><span class="fd-d">Стратег ставить: Скейлити / Тестувати далі / Зупинити / Новий. Головне рішення тижня.</span></div><div class="fd"><span class="fd-n">Скільки часу</span><span class="fd-d">Джун: 15 хв на проєкт. Стратег: 5 хв переглянути і поставити статуси.</span></div></div>
+<div class="tp" id="r2"><h5>Вкладка "Скоркард"</h5><p>Рейтинг креативів. Кожен оцінюється за 5 метриками (CTR, CPC, ATC Rate, CPA, ROAS) по шкалі 1-5. Формула рахує середній бал і показує рішення.</p><div class="fd"><span class="fd-n">Бал 4.0+</span><span class="fd-d">Скейлити. Це winner, збільшувати бюджет.</span></div><div class="fd"><span class="fd-n">Бал 3.0 -- 3.9</span><span class="fd-d">Тестувати далі. Потенціал є, але ще не winner.</span></div><div class="fd"><span class="fd-n">Бал 2.0 -- 2.9</span><span class="fd-d">Рефреш. Спробувати оновити хук або CTA.</span></div><div class="fd"><span class="fd-n">Бал нижче 2.0</span><span class="fd-d">Зупинити. Записати висновок, рухати далі.</span></div></div>
+<div class="tp" id="r3"><h5>Вкладка "Аналіз та дії"</h5><p>Найважливіша вкладка для стратега. Три секції:</p><div class="fd"><span class="fd-n">Що спрацювало</span><span class="fd-d">Топ-3 креативи, який кут, який формат, яка аудиторія, чому (гіпотеза)</span></div><div class="fd"><span class="fd-n">Що не спрацювало</span><span class="fd-d">Найгірші креативи, які кути провалились, чому, що можна врятувати</span></div><div class="fd"><span class="fd-n">Що робити далі</span><span class="fd-d">Що скейлити, які нові тести, що зупинити. Ця секція — вхідні дані для Brief.</span></div></div>
+<div class="tp" id="r4"><h5>Вкладка "Бенчмарки"</h5><p>Довідник: які значення CTR, CPC, CPA, ROAS вважати нормальними для Meta і TikTok.</p><div class="fd"><span class="fd-n">Як використовувати</span><span class="fd-d">Порівнювати метрики з бенчмарками для виставлення балів 1-5 у Скоркарді.</span></div><div class="fd"><span class="fd-n">Як оновлювати</span><span class="fd-d">Раз на квартал замінювати на свої реальні значення по нішах.</span></div></div></div>
+
+<div class="wk"><div class="wk-h">Покрокова робота з файлом</div>
+<div class="ws"><div class="sn-c">1</div><span class="who w-j">Джун</span><div class="sc"><h5>Понеділок ранок: зібрати дані</h5><p>Відкрити рекламний кабінет, вибрати діапазон "минулий тиждень", по кожному креативу скопіювати: витрати, покази, кліки, ATC, покупки, дохід. Вставити у вкладку <span class="tr">Тижневий звіт</span>.</p></div></div>
+<div class="ws"><div class="sn-c">2</div><span class="who w-j">Джун</span><div class="sc"><h5>Заповнити Скоркард</h5><p>Відкрити <span class="tr">Бенчмарки</span>, порівняти метрики з бенчмарками, проставити бали 1-5 у <span class="tr">Скоркард</span>.</p></div></div>
+<div class="ws"><div class="sn-c">3</div><span class="who w-s">Стратег</span><div class="sc"><h5>Аналіз результатів</h5><p>Переглянути <span class="tr">Скоркард</span>, побачити хто winner/loser. Заповнити <span class="tr">Аналіз та дії</span>: що спрацювало, чому, що далі.</p></div></div>
+<div class="ws"><div class="sn-c">4</div><span class="who w-s">Стратег</span><div class="sc"><h5>Поставити статуси і прийняти рішення</h5><p>Колонка "Статус" у <span class="tr">Тижневий звіт</span>: Скейлити / Тестувати / Зупинити. Секція "Що далі" стає основою для нових брифів.</p></div></div></div>
+
+<div class="scenario"><div class="sl">Реальний сценарій</div><h4>Понеділок, 10:00. Проєкт: магазин косметики.</h4>
+<div class="ss"><span class="sn">1.</span>Джун вніс дані за тиждень. 8 активних креативів.</div>
+<div class="ss"><span class="sn">2.</span>Скоркард: UGC_PainPoint_TalkingHead — бал 4.6 (winner). Offer_Static_v2 — бал 1.8 (loser).</div>
+<div class="ss"><span class="sn">3.</span>Аналіз: Pain Point + Talking Head працює. Offer_Static — знижка -10% занадто мала.</div>
+<div class="ss"><span class="sn">4.</span>Що далі: скейлити winner (+20%), зупинити Offer_Static, створити 2 нових з кутом Pain Point.</div>
+<div class="ss"><span class="sn">5.</span>Ці "2 нових креативи" стають задачею для Creative Brief.</div></div>
+
+<div class="conn"><div class="conn-i"><i data-lucide="arrow-right" style="width:18px;height:18px"></i></div><div><strong>Reporting передає в Brief.</strong> Секція "Що робити далі" — це прямий список задач для нових брифів. Дані з Reporting також підсвічують креативи для Fatigue Protocol.</div></div></div>
+
+<div class="divider"><div class="div-l"></div></div>
+
+<!-- ==================== 02 FATIGUE ==================== -->
+<div class="doc-section"><div class="doc-header"><div class="doc-num">02</div><div class="doc-info"><h2>Creative Fatigue Protocol</h2><div class="ds">06_Creative_Fatigue_Protocol.xlsx</div><span class="ft ft-x">Google Sheets</span></div></div>
+<span class="fb fb-d"><i data-lucide="clock" style="width:14px;height:14px"></i> Щоденно, 5 хвилин</span>
+<div class="wi"><strong>Що це і для чого.</strong> Система раннього попередження. Креатив не вмирає миттєво — він повільно згасає. CTR падає на 5% на день, і через тиждень втрачено 30% ефективності. Fatigue Protocol ловить цей момент раніше, поки CPA ще не злетів.</div>
+<div class="wg"><div class="wc wc-do"><h4>Коли відкривати</h4><ul><li>Щоранку: 5-хвилинна перевірка активних креативів</li><li>Коли є раптове зростання CPA</li><li>Коли Frequency переходить 2.5+</li><li>Перед планеркою: які креативи "хворіють"</li></ul></div><div class="wc wc-no"><h4>Коли не потрібен</h4><ul><li>Для нових креативів у перші 3 дні</li><li>Для глибокого аналізу — для цього Reporting</li><li>Для прийняття рішення що створити — для цього Brief</li></ul></div></div>
+
+<div class="wk"><div class="wk-h">Покрокова робота з файлом</div>
+<div class="ws"><div class="sn-c">1</div><span class="who w-j">Джун</span><div class="sc"><h5>Щоранку (5 хв): оновити дані</h5><p>Скопіювати поточний CTR і Frequency з кабінету, вставити у <span class="tr">Трекер втоми</span>. Формули покажуть статус.</p></div></div>
+<div class="ws"><div class="sn-c">2</div><span class="who w-j">Джун</span><div class="sc"><h5>Якщо критичний або попередження — повідомити стратега</h5><p>"Креатив [назва] по проєкту [назва] — статус критичний, CTR впав на 35%".</p></div></div>
+<div class="ws"><div class="sn-c">3</div><span class="who w-s">Стратег</span><div class="sc"><h5>Прийняти рішення за протоколом</h5><p>Відкрити <span class="tr">Протокол втоми</span>: легкий рефреш, середній рефреш, або повна заміна (новий бриф).</p></div></div></div>
+
+<div class="df"><h4>Дерево рішень за сигналом трекера</h4>
+<div class="dr"><span class="dr-if">OK (CTR +-10%)</span><span class="dr-th">Продовжувати. Перевірити завтра.</span><span class="dr-s s-g">Без дій</span></div>
+<div class="dr"><span class="dr-if">Увага (CTR -15 ... -30%)</span><span class="dr-th">Готувати рефреш. 3-5 днів у запасі.</span><span class="dr-s s-w">Готувати рефреш</span></div>
+<div class="dr"><span class="dr-if">Частота (Freq > 3.0)</span><span class="dr-th">Знизити бюджет на 30%. Розширити аудиторію або готувати заміну.</span><span class="dr-s s-w">Знизити бюджет</span></div>
+<div class="dr"><span class="dr-if">Критично (CTR -30%+)</span><span class="dr-th">Зупинити. Негайно бриф на заміну. Бюджет на winner.</span><span class="dr-s s-d">Замінити зараз</span></div></div>
+
+<div class="scenario"><div class="sl">Реальний сценарій</div><h4>Середа, 9:30. Джун оновлює Трекер по проєкту косметики.</h4>
+<div class="ss"><span class="sn">1.</span>Winner UGC_PainPoint_TalkingHead_v1 — статус "Увага". CTR впав з 1.8% до 1.4% (-22%).</div>
+<div class="ss"><span class="sn">2.</span>Джун: "Winner по косметиці — увага, CTR -22%".</div>
+<div class="ss"><span class="sn">3.</span>Стратег: -22% = увага, готувати рефреш. 3-5 днів.</div>
+<div class="ss"><span class="sn">4.</span>Рішення: легкий рефреш (новий хук) + запасний бриф на повну заміну.</div></div>
+
+<div class="conn"><div class="conn-i"><i data-lucide="arrow-right" style="width:18px;height:18px"></i></div><div><strong>Fatigue передає в Brief.</strong> Попередження або критичний статус — це тригер для створення брифу. Fatigue не каже що створити — він каже що потрібно створити.</div></div></div>
+
+<div class="divider"><div class="div-l"></div></div>
+
+<!-- ==================== 03 BRIEF ==================== -->
+<div class="doc-section"><div class="doc-header"><div class="doc-num">03</div><div class="doc-info"><h2>Creative Brief Template</h2><div class="ds">04_Creative_Brief_Template.html</div><span class="ft ft-h">Браузер / PDF</span></div></div>
+<span class="fb fb-c"><i data-lucide="clock" style="width:14px;height:14px"></i> Кожен раз перед створенням нового креативу</span>
+<div class="wi"><strong>Що це і для чого.</strong> Технічне завдання на креатив. Замість голосового повідомлення — структурований документ, який дає креативнику все за 2 хвилини читання. Бриф — точка перетворення стратегії у виробництво.</div>
+<div class="wg"><div class="wc wc-do"><h4>Коли відкривати</h4><ul><li>Коли з Reporting прийшов висновок "потрібен новий креатив"</li><li>Коли Fatigue показав попередження і потрібна заміна</li><li>Коли клієнт має нову акцію або продукт</li><li>Коли тестується нова гіпотеза</li></ul></div><div class="wc wc-no"><h4>Коли не потрібен</h4><ul><li>Для рефрешу хуку — достатньо повідомлення</li><li>Для DPA / каталогу</li><li>Для аналізу результатів — для цього Reporting</li></ul></div></div>
+
+<div class="tb"><div class="tn"><button class="tb-btn active" onclick="st(this,'b1')">Секції 1-2</button><button class="tb-btn" onclick="st(this,'b2')">Секції 3-4</button><button class="tb-btn" onclick="st(this,'b3')">Секції 5-6</button></div>
+<div class="tp active" id="b1"><h5>Секція 1: ціль і контекст</h5><p>Заповнює стратег. Звідки прийшла потреба — з Reporting або Fatigue. Яка ціль, який етап воронки.</p><h5 style="margin-top:16px">Секція 2: цільова аудиторія</h5><p>Заповнює стратег. Хто побачить креатив. Pain points. Desires. Бар'єри. "Жінки 25-45" — це не ЦА. "Мама 32 роки, шукає quick skincare routine" — це ЦА.</p></div>
+<div class="tp" id="b2"><h5>Секція 3: продукт і оффер</h5><p>Стратег або джун. Продукт, ціна, USP, посилання на лендінг.</p><h5 style="margin-top:16px">Секція 4: креативна стратегія</h5><p>Тільки стратег. Кут (з Playbook), концепт, хук, CTA. Клік по тегах — 30 секунд. Потім текст хуку і ключовий меседж. Ця секція визначає 80% успіху.</p></div>
+<div class="tp" id="b3"><h5>Секція 5: платформа і специфікації</h5><p>Джун або стратег. Платформа, формат, розмір, тривалість. Звірити з документом 08.</p><h5 style="margin-top:16px">Секція 6: референси і нотатки</h5><p>Стратег. Приклади, тон, обмеження бренду. Дедлайн і відповідальний.</p></div></div>
+
+<div class="wk"><div class="wk-h">Покрокова робота з файлом</div>
+<div class="ws"><div class="sn-c">1</div><span class="who w-s">Стратег</span><div class="sc"><h5>Секції 1-2: ціль + ЦА (5 хв)</h5><p>Ціль з "Аналіз та дії" Reporting. ЦА зі знання проєкту. Клік по тегах замість тексту.</p></div></div>
+<div class="ws"><div class="sn-c">2</div><span class="who w-s">Стратег</span><div class="sc"><h5>Секція 4: креативна стратегія (3 хв)</h5><p>Playbook (документ 02) поруч. Вибрати кут, концепт, хук, CTA. Написати текст хуку.</p></div></div>
+<div class="ws"><div class="sn-c">3</div><span class="who w-j">Джун</span><div class="sc"><h5>Секції 5-6: специфікації (2 хв)</h5><p>Платформа, формат, розміри. Стратег додає референси.</p></div></div>
+<div class="ws"><div class="sn-c">4</div><span class="who w-s">Стратег</span><div class="sc"><h5>Зберегти як PDF, передати у виробництво</h5><p>Далі креатив виробляється за SOP (документ 05).</p></div></div></div>
+
+<div class="conn"><div class="conn-i"><i data-lucide="arrow-right" style="width:18px;height:18px"></i></div><div><strong>Brief передає в Testing.</strong> Бриф описує що створити. Коли виробництво закінчене — наступний крок Testing Protocol. Бриф фіксує гіпотезу, яка потім перевіряється тестом.</div></div></div>
+
+<div class="divider"><div class="div-l"></div></div>
+
+<!-- ==================== 04 TESTING ==================== -->
+<div class="doc-section"><div class="doc-header"><div class="doc-num">04</div><div class="doc-info"><h2>Creative Testing Protocol</h2><div class="ds">03_Creative_Testing_Protocol.xlsx</div><span class="ft ft-x">Google Sheets</span></div></div>
+<span class="fb fb-t"><i data-lucide="clock" style="width:14px;height:14px"></i> При запуску + через 3-7 днів при аналізі</span>
+<div class="wi"><strong>Що це і для чого.</strong> Суддя. Каже: цей креатив winner чи loser. Без протоколу хороші креативи вбиваються рано, а погані тримаються довго. Чіткі правила, мінімуми даних, формула визначення переможця.</div>
+<div class="wg"><div class="wc wc-do"><h4>Коли відкривати</h4><ul><li>При запуску нового креативу — зафіксувати гіпотезу</li><li>Через 3-7 днів — оцінити результат</li><li>Коли немає впевненості: зупиняти чи ні</li><li>Для фіксації інсайтів в Архів</li></ul></div><div class="wc wc-no"><h4>Коли не потрібен</h4><ul><li>Для щоденного моніторингу — Fatigue</li><li>Для загального огляду — Reporting</li><li>Для створення креативу — Brief</li></ul></div></div>
+
+<div class="tb"><div class="tn"><button class="tb-btn active" onclick="st(this,'t1')">Протокол</button><button class="tb-btn" onclick="st(this,'t2')">Трекер тестів</button><button class="tb-btn" onclick="st(this,'t3')">Матриця KPI</button><button class="tb-btn" onclick="st(this,'t4')">Дерево рішень</button><button class="tb-btn" onclick="st(this,'t5')">Архів</button></div>
+<div class="tp active" id="t1"><h5>Вкладка "Протокол тестування"</h5><p>4 кроки:</p><div class="fd"><span class="fd-n">Крок 1: гіпотеза</span><span class="fd-d">Одна змінна за раз. "Якщо [X], то [Y] покращиться, тому що [причина]".</span></div><div class="fd"><span class="fd-n">Крок 2: налаштування</span><span class="fd-d">Бюджет мін. 2-3x CPA на варіант. 3-7 днів. Ідентична аудиторія.</span></div><div class="fd"><span class="fd-n">Крок 3: рішення</span><span class="fd-d">Мінімум 50 конверсій або 3 дні. Winner = кращий на 20%+.</span></div><div class="fd"><span class="fd-n">Крок 4: дії</span><span class="fd-d">Winner — скейлити (+20% кожні 3 дні). Loser — в Архів з інсайтом.</span></div></div>
+<div class="tp" id="t2"><h5>Вкладка "Трекер тестів"</h5><p>Один рядок = один A/B тест. Заповнюється при запуску і при оцінці.</p><div class="fd"><span class="fd-n">При запуску</span><span class="fd-d">Дата, гіпотеза, контроль, тест, змінна.</span></div><div class="fd"><span class="fd-n">Через 3-7 днів</span><span class="fd-d">CTR, CPA, ROAS обох варіантів. Формула визначить winner.</span></div></div>
+<div class="tp" id="t3"><h5>Вкладка "Матриця KPI"</h5><div class="fd"><span class="fd-n">TOFU</span><span class="fd-d">Hook Rate, Hold Rate. Хук не працює — міняти перші секунди.</span></div><div class="fd"><span class="fd-n">MOFU</span><span class="fd-d">CTR, ATC Rate. Клікають, не додають — проблема в лендінгу.</span></div><div class="fd"><span class="fd-n">BOFU</span><span class="fd-d">CPA, ROAS. Додають, не купують — проблема в чекауті.</span></div></div>
+<div class="tp" id="t4"><h5>Вкладка "Дерево рішень"</h5><p>Таблиця "Симптом, Причина, Перевірка, Дія".</p><div class="fd"><span class="fd-n">Приклад</span><span class="fd-d">"Високий CTR, низький ATC" — перевірити лендінг і message match.</span></div></div>
+<div class="tp" id="t5"><h5>Вкладка "Архів тестів"</h5><p>Найцінніший актив через 6 місяців. Записувати всі тести. Через півроку: "Pain Point працює в 70% випадків у beauty-ніші".</p></div></div>
+
+<div class="wk"><div class="wk-h">Покрокова робота з файлом</div>
+<div class="ws"><div class="sn-c">1</div><span class="who w-s">Стратег</span><div class="sc"><h5>При запуску: зафіксувати тест</h5><p><span class="tr">Трекер тестів</span>: дата, гіпотеза, контроль, тест, змінна.</p></div></div>
+<div class="ws"><div class="sn-c">2</div><span class="who w-j">Джун</span><div class="sc"><h5>Через 3-7 днів: внести результати</h5><p>CTR, CPA, ROAS обох варіантів. Формула визначить winner.</p></div></div>
+<div class="ws"><div class="sn-c">3</div><span class="who w-s">Стратег</span><div class="sc"><h5>Прийняти рішення</h5><p>Тест переміг — скейлити. Контроль переміг — залишається. Нічия — продовжити або залишити контроль.</p></div></div>
+<div class="ws"><div class="sn-c">4</div><span class="who w-s">Стратег</span><div class="sc"><h5>Записати в Архів</h5><p>Що тестували, що вийшло, який інсайт. Навіть невдалі тести — цінні.</p></div></div>
+<div class="ws"><div class="sn-c">5</div><span class="who w-j">Джун</span><div class="sc"><h5>Перенести в Reporting</h5><p>Оновити дані winner у <span class="tr">Тижневий звіт</span>. Цикл замкнувся.</p></div></div></div>
+
+<div class="conn"><div class="conn-i"><i data-lucide="rotate-ccw" style="width:18px;height:18px"></i></div><div><strong>Testing повертає в Reporting.</strong> Результати тесту потрапляють у Тижневий звіт. Winner моніториться через Fatigue. Loser — в Архів. Нові гіпотези генерують нові брифи. Цикл замкнений.</div></div></div>
+
+<!-- ==================== FLOW ==================== -->
+<div class="flow"><h3>Тиждень стратега: як це виглядає разом</h3>
+<div class="fr"><div class="fr-d">ПН, ранок</div><div class="fr-a">Джун заповнює <span class="dt dt-1">Тижневий звіт</span> по всіх проєктах. Стратег дивиться <span class="dt dt-1">Скоркард</span> — хто winner, хто loser.</div></div>
+<div class="fr"><div class="fr-d">ПН, обід</div><div class="fr-a">Стратег заповнює <span class="dt dt-1">Аналіз та дії</span>. Дивиться <span class="dt dt-3">Трекер втоми</span> — які winners вмирають. Формує список задач.</div></div>
+<div class="fr"><div class="fr-d">ВТ</div><div class="fr-a">Потрібні нові креативи — стратег заповнює <span class="dt dt-2">Бриф</span> (10 хв). Є результати тестів — записує у <span class="dt dt-4">Трекер тестів</span> і <span class="dt dt-4">Архів</span>.</div></div>
+<div class="fr"><div class="fr-d">СР -- ЧТ</div><div class="fr-a">Креативи у виробництві. Джун щоранку оновлює <span class="dt dt-3">Трекер втоми</span> (5 хв). Критичний статус — стратег пише <span class="dt dt-2">Бриф</span> на заміну.</div></div>
+<div class="fr"><div class="fr-d">ПТ</div><div class="fr-a">Планерка 15 хв. Запуск нових креативів, запис у <span class="dt dt-4">Трекер тестів</span>. Все готово до понеділка.</div></div>
+<div class="fr"><div class="fr-d hl">Щоденно</div><div class="fr-a">Єдиний щоденний ритуал — джун оновлює <span class="dt dt-3">Трекер втоми</span> (5 хв). Все інше — тижневий цикл.</div></div></div>
+
+<div class="footer"><div class="footer-g">magic</div><div style="margin-top:4px">advertise for e-commerce</div></div>
+</div>
+
+<script>
+function st(b,id){const bl=b.closest('.tb');bl.querySelectorAll('.tb-btn').forEach(x=>x.classList.remove('active'));bl.querySelectorAll('.tp').forEach(x=>x.classList.remove('active'));b.classList.add('active');document.getElementById(id).classList.add('active')}
+lucide.createIcons();
+</script>
+</body>
+</html>
